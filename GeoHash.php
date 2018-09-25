@@ -101,7 +101,9 @@ class Geohash
         $base = substr($srcHash, 0, strlen($srcHash) - 1);
     
         if (strpos($this->borders[$dir][$type], $lastChr) !== false) {
-            $base = $this->calculateAdjacent($base, $dir);
+            if(strlen($base)!=1){
+                $base = $this->calculateAdjacent($base, $dir);
+            }
         }
         	
         return $base . $this->coding[strpos($this->neighbors[$dir][$type], $lastChr)];
